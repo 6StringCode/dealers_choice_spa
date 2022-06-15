@@ -18,7 +18,25 @@ app.get('/api/collectors', async(req, res, next)=> {
     catch(ex){
       next(ex);
     }
-  });
+});
+
+app.get('/api/guitars', async(req, res, next)=> {
+    try {
+      res.send(await Guitar.findAll());
+    }
+    catch(ex){
+      next(ex);
+    }
+});
+
+app.get('/api/collectors/:collectorId/collections', async(req, res, next)=> {
+  try {
+    res.send(await Collection.findAll({where: { collectorId : req.params.collectorId }}));
+  }
+  catch(ex){
+    next(ex);
+  }
+});
   
 
 const port = process.env.PORT || 3001;

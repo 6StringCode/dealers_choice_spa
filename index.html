@@ -2,6 +2,28 @@
     <head>
         <script src="/dist/main.js" defer></script>
         <title>Guitar Collectors Club</title>
+        <style>
+            body {
+                padding: 1rem;
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            main {
+                display: flex;
+            }
+            section {
+                flex: 1;
+            }
+            h1 {
+                text-align: center;
+            }
+            .selected {
+                background-color: darkorchid;
+            }
+            .selected a {
+                color: cornsilk;
+            }
+        </style>
+       
     </head>
     <body>
         <h1>Guitar Collectors Club</h1>
@@ -13,15 +35,15 @@
                 </ul>
             </section>
             <section>
-                <h2>Guitar Brands</h2>
+                <h2>Guitars</h2>
                 <ul id='guitars-list'>
                 </ul>
               </section>
-              <section>
-                <h2>Collections</h2>
+            <section>
+                <h2>Collection</h2>
                 <ul id='collections-list'>
                 </ul>
-              </section>
+            </section>
         </main>
     </body>
 </html>
