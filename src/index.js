@@ -1,4 +1,4 @@
-console.log('Mozel Tov!');
+console.log('Mozel Tov, webpack works!');
 const axios = require('axios');
 
 const collectorsList = document.querySelector('#collectors-list');
@@ -56,17 +56,17 @@ const renderGuitars = ()=> {
     guitarsList.innerHTML = html;
 };
 
-const renderCollections = ()=> {
-    const html = state.collections.map( collection => {
-    //const collection = state.collectors.filter(collector => collector.guitarId === guitar.id);
-    //console.log(collection);
-        return `
-            <li> ${collection.id} </li>
-        `
-    }).join('');
-    console.log(html);
-    collectionsList.innerHTML = html;
-};
+// const renderCollections = ()=> {
+//     const html = state.collections.map( collection => {
+//     const guitar = state.guitars.find(guitar => guitar.id === collection.guitarId);
+//     console.log(collection);
+//         return `
+//             <li> ${guitar.model} </li>
+//         `
+//     }).join('');
+//     console.log(html);
+//     collectionsList.innerHTML = html;
+// };
 
 
 const startMeUp = async()=> {
@@ -75,8 +75,8 @@ const startMeUp = async()=> {
     await fetchCollections();
     renderCollectors();
     renderGuitars();
-    renderCollections();
-    console.log(state);
+    //renderCollections();
+    //console.log(state);
 };
 
 startMeUp();

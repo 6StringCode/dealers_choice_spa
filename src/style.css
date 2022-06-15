@@ -1,0 +1,19 @@
+body {
+    padding: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+main {
+    display: flex;
+}
+section {
+    flex: 1;
+}
+h1 {
+    text-align: center;
+}
+.selected {
+    background-color: darkorchid;
+}
+.selected a {
+    color: cornsilk;
+}

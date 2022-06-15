@@ -1,4 +1,4 @@
-const { syncAndSeed, conn, Collector, Guitar, Collection } = require('./db');
+const { syncAndSeed, Collector, Guitar, Collection } = require('./db');
 const db = require('./db');
 const express = require('express');
 const app = express();
@@ -10,6 +10,8 @@ app.use(express.json());
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 
 app.get('/', (req, res, next)=> res.sendFile(path.join(__dirname, 'index.html')));
+
+app.get('/src/styles', (req, res, next)=> res.sendFile(path.join(__dirname, 'styles.css')));
 
 app.get('/api/collectors', async(req, res, next)=> {
     try {

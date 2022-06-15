@@ -36,6 +36,11 @@ Collection.belongsTo(Guitar);
 const syncAndSeed = async()=> {
     await conn.sync({force : true });
 
+    //I tried getting this array to work like it was presented in the Acme-Reservations, 
+    //But could not get things to work for the life of me. 
+    //So I tried the old way and it sorta works, but I'm not accessing a collectorId or GuitarId 
+    //on my COlelctions even though they seem to be there in the database.
+    
     // let guitars = [
     //     {
     //         model: "Stratocaster"
@@ -104,7 +109,6 @@ const syncAndSeed = async()=> {
 module.exports = {
     Collector,
     Guitar,
-    //Collection,
-    conn, 
+    Collection, 
     syncAndSeed
 };
