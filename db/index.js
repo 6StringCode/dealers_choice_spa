@@ -7,36 +7,22 @@ const syncAndSeed = async()=> {
 
     let guitars = [
         {
-            brand: "Fender",
             model: "Stratocaster"
         },
         {
-            brand: "Fender",
             model: "Telecaster"
         },
         {
-            brand: "Gibson",
             model: "Les Paul"
         },
         {
-            brand: "Gibson",
             model: "J-50"
         },
         {
-            brand: "Gibson",
-            model: "SG"
+            model: "Martin"
         },
         {
-            brand: "Martin",
-            model: "OM-21"
-        },
-        {
-            brand: "Martin",
-            model: "D-35"
-        },
-        {
-            brand: "Taylor",
-            model: "400"
+            model: "Taylor"
         }
     ];
     
@@ -54,11 +40,11 @@ const syncAndSeed = async()=> {
       }, {});
 
     const collections = await Promise.all([
-        Collection.create({ collectorId: collectors.Adam.id, brandId: guitars.Fender.id }),
-        Collection.create({ collectorId: collectors.Adam.id, brandId: guitars.Gibson.id }),
-        Collection.create({ collectorId: collectors.Adam.id, brandId: guitars.Martin.id }),
-        Collection.create({ collectorId: collectors.Colton.id, brandId: guitars.Fender.id }),
-        Collection.create({ collectorId: collectors.Prof.id, brandId: guitars.Taylor.id })
+        Collection.create({ collectorId: collectors.Adam.id, modelId: guitars.Stratocaster.id }),
+        Collection.create({ collectorId: collectors.Adam.id, modelId: guitars.Telecaster.id }),
+        Collection.create({ collectorId: collectors.Adam.id, modelId: guitars.Martin.id }),
+        Collection.create({ collectorId: collectors.Colton.id, modelId: guitars.Telecaster.id }),
+        Collection.create({ collectorId: collectors.Prof.id, modelId: guitars.Taylor.id })
     ]);
     return {
         collectors,
@@ -80,10 +66,6 @@ const Collector = conn.define('collector', {
 });
 
 const Guitar = conn.define('guitar', {
-    brand: {
-        type: STRING,
-        allowNull: false
-    },
     model: {
         type: STRING,
         allowNull: false,
