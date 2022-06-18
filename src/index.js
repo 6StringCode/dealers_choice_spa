@@ -26,8 +26,10 @@ const fetchGuitars = async()=> {
 };
 
 const fetchCollections = async()=> {
-    const id = window.location.hash;//slice broke it
-    const response = await axios.get(`/api/collectors/${id}/collections`);
+    const id = window.location.hash.slice(1);//slice broke it
+    console.log(id);
+    const response = await axios.get(`/api/collectors/2/collections`);
+    console.log(response.data);
     state.collections = response.data;
     
 };
@@ -56,17 +58,17 @@ const renderGuitars = ()=> {
     guitarsList.innerHTML = html;
 };
 
-// const renderCollections = ()=> {
-//     const html = state.collections.map( collection => {
-//     const guitar = state.guitars.find(guitar => guitar.id === collection.guitarId);
-//     console.log(collection);
-//         return `
-//             <li> ${guitar.model} </li>
-//         `
-//     }).join('');
-//     console.log(html);
-//     collectionsList.innerHTML = html;
-// };
+const renderCollections = ()=> {
+    const html = state.collections.map( collection => {
+    const guitar = state.guitars.find(guitar => guitar.id === collection.guitarId);
+    console.log(collection);
+        return `
+            <li> ${guitar.model} </li>
+        `
+    }).join('');
+    console.log(html);
+    collectionsList.innerHTML = html;
+};
 
 
 const startMeUp = async()=> {
@@ -75,7 +77,7 @@ const startMeUp = async()=> {
     await fetchCollections();
     renderCollectors();
     renderGuitars();
-    //renderCollections();
+    renderCollections();
     //console.log(state);
 };
 
