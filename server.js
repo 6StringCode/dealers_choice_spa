@@ -25,11 +25,11 @@ app.get('/api/guitars', async(req, res, next)=> {
 
 app.get('/api/collectors/:collectorId/collections', async(req, res, next)=> {
   try {
-    res.send(await Collection.findAll({where: { collectorId }}));
+    res.send(await Collection.findAll({ where: { collectorId: req.params.collectorId }}));
   }
   catch(ex){
     next(ex);
-  }
+  } 
 });
 
 app.get('/api/collectors', async(req, res, next)=> {

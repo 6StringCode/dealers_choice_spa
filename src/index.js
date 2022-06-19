@@ -13,7 +13,11 @@ window.addEventListener('hashchange', async()=> {
 
 });
 
-const state = {};
+const state = {
+    collections: [],
+    collectors: [],
+    guitars: [],
+};
 
 const fetchCollectors = async()=> {
     const response = await axios.get('/api/collectors');
@@ -26,12 +30,16 @@ const fetchGuitars = async()=> {
 };
 
 const fetchCollections = async()=> {
-    const id = window.location.hash.slice(1);//slice broke it
+    const id = window.location.hash.slice(1);
     console.log(id);
-    const response = await axios.get(`/api/collectors/2/collections`);
-    console.log(response.data);
-    state.collections = response.data;
-    
+    if(id){
+        const response = await axios.get(`/api/collectors/${id}/collections`);
+        state.collections = response.data;
+    }
+    // else {
+    //     state.collections = [];
+    // };
+    renderCollections();
 };
 
 const renderCollectors = ()=> {
@@ -61,23 +69,26 @@ const renderGuitars = ()=> {
 const renderCollections = ()=> {
     const html = state.collections.map( collection => {
     const guitar = state.guitars.find(guitar => guitar.id === collection.guitarId);
-    console.log(collection);
         return `
             <li> ${guitar.model} </li>
         `
     }).join('');
-    console.log(html);
     collectionsList.innerHTML = html;
+    console.log(html);
 };
 
 
 const startMeUp = async()=> {
     await fetchCollectors();
     await fetchGuitars();
-    await fetchCollections();
+
+    // if (!!window.location.hash){
+        await fetchCollections();
+        renderCollectors();
+   // }    
+
     renderCollectors();
     renderGuitars();
-    renderCollections();
     //console.log(state);
 };
 

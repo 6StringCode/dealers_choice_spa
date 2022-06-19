@@ -63,10 +63,12 @@ const syncAndSeed = async()=> {
     // ];
     
     //let guitars = await Promise.all(['Stratocaster', 'Telecaster', 'Les Paul'].map( model => Guitar.create({ model })));
-    let [Stratocaster, Telecaster, Les_Paul] = await Promise.all([
+    let [Stratocaster, Telecaster, Les_Paul, J50, ES_335] = await Promise.all([
         Guitar.create({model: 'Stratocaster'}),
         Guitar.create({model: 'Telecaster'}),
-        Guitar.create({model: 'Les_Paul'}),
+        Guitar.create({model: 'Les Paul'}),
+        Guitar.create({model: 'J-50'}),
+        Guitar.create({model: 'ES-335'}),
     ]);
     
     // guitars = guitars.reduce( (acc, guitar) => {
@@ -74,15 +76,19 @@ const syncAndSeed = async()=> {
     //     return acc;
     //   }, {}); 
 
-    const [Adam, Slash, Keith, Jimi, Eric, Stevie] = await Promise.all(['Adam', 'Slash', 'Keith', 'Jimi', 'Eric', 'Stevie'].map( name => Collector.create({ name })));
+    const [Adam, Slash, Keith, Jimi, Eric, Stevie, Prince] = await Promise.all(['Adam', 'Slash', 'Keith', 'Jimi', 'Eric', 'Stevie', 'Prince'].map( name => Collector.create({ name })));
     
     const collections = await Promise.all([
         Collection.create({collectorId: Adam.id, guitarId: Stratocaster.id}),
         Collection.create({collectorId: Adam.id, guitarId: Telecaster.id}),
         Collection.create({collectorId: Adam.id, guitarId: Les_Paul.id}),
+        Collection.create({collectorId: Adam.id, guitarId: J50.id}),
+        Collection.create({collectorId: Jimi.id, guitarId: Stratocaster.id}),
         Collection.create({collectorId: Slash.id, guitarId: Les_Paul.id}),
         Collection.create({collectorId: Keith.id, guitarId: Telecaster.id}),
+        Collection.create({collectorId: Prince.id, guitarId: Telecaster.id}),
         Collection.create({collectorId: Eric.id, guitarId: Stratocaster.id}),
+        Collection.create({collectorId: Eric.id, guitarId: ES_335.id}),
         Collection.create({collectorId: Stevie.id, guitarId: Stratocaster.id}),
         ])
 
