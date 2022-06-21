@@ -2,14 +2,14 @@ console.log('Mozel Tov, webpack works!');
 const axios = require('axios');
 
 const collectorsList = document.querySelector('#collectors-list');
-const guitarsList = document.querySelector('#guitars-list');
+//const guitarsList = document.querySelector('#guitars-list');
 const collectionsList = document.querySelector('#collections-list');
 
 window.addEventListener('hashchange', async()=> {
     renderCollectors();
     await fetchGuitars();
     await fetchCollections();
-    renderGuitars();
+    //renderGuitars();
 
 });
 
@@ -38,7 +38,7 @@ const fetchCollections = async()=> {
     }
     // else {
     //     state.collections = [];
-    // };
+    // }; //don't need this because we created the empty [] in state
     renderCollections();
 };
 
@@ -56,15 +56,15 @@ const renderCollectors = ()=> {
     collectorsList.innerHTML = html;
 };
 
-const renderGuitars = ()=> {
-    const html = state.guitars.map( guitar => {
-    //const collection = state.collectors.filter(collector => collector.guitarId === guitar.id);
-        return `
-            <li> ${guitar.model} </li>
-        `
-    }).join('');
-    guitarsList.innerHTML = html;
-};
+// const renderGuitars = ()=> {
+//     const html = state.collections.map( collection => {
+//         const guitar = state.guitars.find(guitar => guitar.id === collection.guitarId);
+//             return `
+//                 <li> ${guitar.model} </li>
+//             `
+//         }).join('');
+//         collectionsList.innerHTML = html;
+// };
 
 const renderCollections = ()=> {
     const html = state.collections.map( collection => {
@@ -88,8 +88,7 @@ const startMeUp = async()=> {
    // }    
 
     renderCollectors();
-    renderGuitars();
-    //console.log(state);
+    //renderGuitars();
 };
 
 startMeUp();

@@ -1,5 +1,4 @@
 const { syncAndSeed, Collector, Guitar, Collection } = require('./db');
-const db = require('./db');
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -23,6 +22,15 @@ app.get('/api/guitars', async(req, res, next)=> {
   }
 });
 
+app.get('/api/collectors', async(req, res, next)=> {
+  try {
+    res.send(await Collector.findAll());
+  }
+  catch(ex){
+    next(ex);
+  }
+});
+
 app.get('/api/collectors/:collectorId/collections', async(req, res, next)=> {
   try {
     res.send(await Collection.findAll({ where: { collectorId: req.params.collectorId }}));
@@ -32,21 +40,13 @@ app.get('/api/collectors/:collectorId/collections', async(req, res, next)=> {
   } 
 });
 
-app.get('/api/collectors', async(req, res, next)=> {
-    try {
-      res.send(await Collector.findAll());
-    }
-    catch(ex){
-      next(ex);
-    }
-});
 
 const port = process.env.PORT || 3001;
 
 const init = async()=> {
     try {
         console.log('db setup'); 
-        await db.syncAndSeed();
+        await syncAndSeed();
         app.listen(port, ()=> console.log(`listening on port ${port}`));
     }
     catch(ex){

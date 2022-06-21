@@ -97,13 +97,7 @@ const syncAndSeed = async()=> {
     //     return acc;
     //   }, {});
 
-    //const collections = await Promise.all([
-         //Collector.create({ collectorId: collectors.Adam.id, guitarId: Stratocaster.id }),
-    //     Collection.create({ collectorId: collectors.Adam.id, modelId: guitars.id }),
-        // Collection.create({ collectorId: collectors.Adam.id, modelId: Martin.id }),
-        // Collection.create({ collectorId: collectors.Colton.id, modelId: guitars.Telecaster.id }),
-        // Collection.create({ collectorId: collectors.Prof.id, modelId: guitars.Taylor.id })
-    //]);
+
     // return {
     //     collectors,
     //     guitars,

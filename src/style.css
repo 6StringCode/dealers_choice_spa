@@ -1,6 +1,6 @@
 body {
     padding: 1rem;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 main {
     display: flex;
@@ -16,4 +16,8 @@ h1 {
 }
 .selected a {
     color: cornsilk;
+}
+
+li {
+    padding: .25rem;
 }
