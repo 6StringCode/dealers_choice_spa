@@ -43,18 +43,18 @@ const fetchCollections = async()=> {
 };
 
 const renderCollectors = ()=> {
-    const id = window.location.hash.slice(1);
+    const id = window.location.hash.slice(1)*1;
     const html = state.collectors.map( collector => {
         return `
             <li class='${ collector.id === id ? 'selected' : ''}'> 
             <a href='#${collector.id}'> 
             ${collector.name}
-            </a>
             </li>
         `
     }).join('');
     collectorsList.innerHTML = html;
 };
+
 
 // const renderGuitars = ()=> {
 //     const html = state.collections.map( collection => {
